@@ -45,7 +45,7 @@ namespace MarsOnBoard.MarsPages
         public string validateAddSkill(IWebDriver driver)
         {
             //IWebElement addSkillMessage = driver.FindElement(By.XPath("//div[@class='ns-box ns-growl ns-effect-jelly ns-type-success ns-show']/div"));
-                IWebElement addSkillMessage = driver.FindElement(By.XPath("//*[contains(text(),'has been added to your skills')]"));
+            IWebElement addSkillMessage = driver.FindElement(By.XPath("//*[contains(text(),'has been added to your skills')]"));
             return addSkillMessage.Text;
         }
         

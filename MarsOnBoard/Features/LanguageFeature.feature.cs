@@ -77,11 +77,21 @@ namespace MarsOnBoard.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create a language record with valid details")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        public void CreateALanguageRecordWithValidDetails()
+        [NUnit.Framework.TestCaseAttribute("English", "Fluent", null)]
+        [NUnit.Framework.TestCaseAttribute("Sinhala", "Native/Bilingual", null)]
+        [NUnit.Framework.TestCaseAttribute("Tamil", "Basic", null)]
+        public void CreateALanguageRecordWithValidDetails(string language, string languageLevel, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "tag1"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Language", language);
+            argumentsOfScenario.Add("LanguageLevel", languageLevel);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a language record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
@@ -105,75 +115,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 11
  testRunner.Then("The language record should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Update existing language record with valid details")]
-        [NUnit.Framework.TestCaseAttribute("English", "Fluent", null)]
-        [NUnit.Framework.TestCaseAttribute("Sinhala", "Native/Bilingual", null)]
-        [NUnit.Framework.TestCaseAttribute("Tamil", "Basic", null)]
-        public void UpdateExistingLanguageRecordWithValidDetails(string language, string languageLevel, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Language", language);
-            argumentsOfScenario.Add("LanguageLevel", languageLevel);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update existing language record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 12
+ testRunner.When(string.Format("I update \'{0}\',\'{1}\' on an existing language record", language, languageLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 13
- this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 14
- testRunner.Given("I logged into localhostweb portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 15
- testRunner.When("I navigate to profile language page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 16
- testRunner.And(string.Format("I update \'{0}\',\'{1}\' on an existing language record", language, languageLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 17
  testRunner.Then("The language record should have the update \'<language>\',\'<languageLevel>\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove existing language record")]
-        public void RemoveExistingLanguageRecord()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove existing language record", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 26
-this.ScenarioInitialize(scenarioInfo);
+#line 14
+ testRunner.When("I remove language record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 27
- testRunner.Given("I logged into localhostweb portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 28
- testRunner.When("I navigate to profile language page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 29
- testRunner.And("I remove language record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 30
+#line 15
  testRunner.Then("The language record should be removed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

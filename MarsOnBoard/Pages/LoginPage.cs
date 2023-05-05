@@ -13,10 +13,7 @@ namespace MarsOnBoard.MarsPages
     public class LoginPage
     {
         public void JoinActions(IWebDriver driver)
-        {
-            //WebDriverWait wait = new WebDriverWait (driver, TimeSpan.FromSeconds (5));//implicit wait
-            //wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath("//*[@id=\"home\"]/div/div/div[1]/div/button")));//explicit wait
-
+        {            
             //Maximise the browser window
             driver.Manage().Window.Maximize();
 

@@ -77,11 +77,22 @@ namespace MarsOnBoard.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create a certification record with valid details")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        public void CreateACertificationRecordWithValidDetails()
+        [NUnit.Framework.TestCaseAttribute("Key Board", "Langway", "2003", null)]
+        [NUnit.Framework.TestCaseAttribute("Education", "University of Colombo", "2015", null)]
+        [NUnit.Framework.TestCaseAttribute("Information Systems", "SLIIT", "2010", null)]
+        public void CreateACertificationRecordWithValidDetails(string certificate, string from, string year, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "tag1"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Certificate", certificate);
+            argumentsOfScenario.Add("From", from);
+            argumentsOfScenario.Add("Year", year);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create a certification record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -105,76 +116,16 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.Then("The certification record should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Update existing certification record with valid details")]
-        [NUnit.Framework.TestCaseAttribute("Key Board", "Langway", "2003", null)]
-        [NUnit.Framework.TestCaseAttribute("Education", "University of Colombo", "2015", null)]
-        [NUnit.Framework.TestCaseAttribute("Information Systems", "SLIIT", "2010", null)]
-        public void UpdateExistingCertificationRecordWithValidDetails(string certificate, string from, string year, string[] exampleTags)
-        {
-            string[] tagsOfScenario = exampleTags;
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Certificate", certificate);
-            argumentsOfScenario.Add("From", from);
-            argumentsOfScenario.Add("Year", year);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update existing certification record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 13
+ testRunner.When(string.Format("I update \'{0}\',\'{1}\',\'{2}\' on an existing certificate record", certificate, from, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
 #line 14
- this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 15
- testRunner.Given("I logged into myskill portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 16
- testRunner.When("I navigate to profile certification page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 17
- testRunner.And(string.Format("I update \'{0}\',\'{1}\',\'{2}\' on an existing certificate record", certificate, from, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 18
  testRunner.Then("The certificate record should have the updated \'<certificate>\',\'<from>\'\'<year>\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Remove existing certification record")]
-        public void RemoveExistingCertificationRecord()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove existing certification record", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 27
-this.ScenarioInitialize(scenarioInfo);
+#line 15
+ testRunner.When("I remove certificate record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-#line 28
- testRunner.Given("I logged into myskill portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 29
- testRunner.When("I navigate to profile certificate page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 30
- testRunner.And("I remove certificate record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 31
+#line 16
  testRunner.Then("The certificate record should be removed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
