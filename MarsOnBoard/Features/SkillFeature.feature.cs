@@ -77,21 +77,11 @@ namespace MarsOnBoard.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Create skill record with valid details")]
         [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("Negotiation", "Beginner", null)]
-        [NUnit.Framework.TestCaseAttribute("Attention to detail", "Intermediate", null)]
-        [NUnit.Framework.TestCaseAttribute("Collaboration", "Expert", null)]
-        public void CreateSkillRecordWithValidDetails(string skill, string skillLevel, string[] exampleTags)
+        public void CreateSkillRecordWithValidDetails()
         {
-            string[] @__tags = new string[] {
+            string[] tagsOfScenario = new string[] {
                     "tag1"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            argumentsOfScenario.Add("Skill", skill);
-            argumentsOfScenario.Add("SkillLevel", skillLevel);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create skill record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
@@ -115,16 +105,75 @@ this.ScenarioInitialize(scenarioInfo);
 #line 12
  testRunner.Then("The record should be added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 13
- testRunner.When(string.Format("I update \'{0}\',\'{1}\' on an existing skill record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Edit an existing skill record with valid details")]
+        [NUnit.Framework.TestCaseAttribute("Negotiation", "Beginner", null)]
+        [NUnit.Framework.TestCaseAttribute("Attention to detail", "Intermediate", null)]
+        [NUnit.Framework.TestCaseAttribute("Collaboration", "Expert", null)]
+        public void EditAnExistingSkillRecordWithValidDetails(string skill, string skillLevel, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Skill", skill);
+            argumentsOfScenario.Add("SkillLevel", skillLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Edit an existing skill record with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 14
- testRunner.Then("The record should have the updated \'<skill>\',\'<skillLevel>\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
 #line 15
- testRunner.When("I remove skill record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.Given("I logged into localhost portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 16
+ testRunner.When("I navigate to profile skill page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 17
+ testRunner.And(string.Format("I update \'{0}\',\'{1}\' on an existing skill record", skill, skillLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 18
+ testRunner.Then("The record should have the updated \'<skill>\',\'<skillLevel>\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Remove and existing skill record")]
+        public void RemoveAndExistingSkillRecord()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove and existing skill record", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 26
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 27
+ testRunner.Given("I logged into localhost portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 28
+ testRunner.When("I navigate to profile skill page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 29
+ testRunner.And("I remove skill record", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 30
  testRunner.Then("The record should be removed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
